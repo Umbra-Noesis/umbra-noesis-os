@@ -1,168 +1,497 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8"/>
-        <meta name="viewport" content="width=device-width, initial-scale=1"/>
-        <title>EVE OS — Umbra-Noesis Operating System</title>
-        <meta name="description" content="EVE OS — the Umbra-Noesis operating system layer, built for local-first cognition, AI-native integration, and secure orchestration of tools, memory, and hardware."/>
-        <!-- Font Awesome (icons) -->
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" referrerpolicy="no-referrer"/>
-        <!-- Tailwind CDN (matches main site utility classes) -->
-        <script src="https://cdn.tailwindcss.com"></script>
-    </head>
-    <body class="bg-slate-950 text-slate-100 antialiased">
-        <!-- Page wrapper -->
-        <div class="min-h-screen flex flex-col">
-            <!-- Top bar / nav -->
-            <header class="border-b border-slate-800/70 bg-slate-950/80 backdrop-blur">
-                <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-4 flex items-center justify-between gap-4">
-                    <!-- Brand -->
-                    <a href="index.html" class="flex items-center gap-2 group"> <div class="h-9 w-9 rounded-xl border border-slate-700 bg-slate-900/80 flex items-center justify-center text-xs font-semibold tracking-tight">
-                            <img src="../assets/img/ChatGPT%20Image%20Dec%205,%202025,%2005_52_41%20PM.png" alt="Umbra-Noesis logo"/>
-                        </div> <div class="flex flex-col leading-tight"><span class="text-sm font-semibold tracking-wide text-slate-50 group-hover:text-[#B87333] transition-colors">
-                Umbra-Noesis </span><span class="text-[11px] text-slate-400">
-                EVE OS — Operating System Layer </span>
-                        </div> </a>
-                    <!-- Back to ecosystem pill -->
-                    <a href="https://umbra-noesis.com" class="inline-flex items-center gap-2 rounded-full border border-slate-700 bg-slate-900/80 px-3 py-1.5 text-xs font-medium text-slate-100 hover:border-[#B87333] hover:text-[#B87333] hover:bg-slate-900 transition-colors"> <i class="fa-solid fa-arrow-left text-[11px]"></i> <span>Back to Umbra-Noesis Ecosystem</span> </a>
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <title>EVE OS — Local AI Infrastructure, Linux Security Built In</title>
+    <meta name="description" content="EVE OS is the AI-aware Linux operating system of Umbra-Noesis — local inference, memory, and tool orchestration as first-class OS citizens. Linux security built in, for everyday use."/>
+    <meta property="og:title" content="EVE OS — Local AI Infrastructure, Linux Security Built In"/>
+    <meta property="og:description" content="AI-aware Linux OS. Local inference, memory, and orchestration built in. No cloud required."/>
+    <meta property="og:type" content="website"/>
+    <meta property="og:url" content="https://umbra-noesis-os.net/"/>
+    <link rel="icon" href="assets/img/un-os-logo.png" type="image/png"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" referrerpolicy="no-referrer"/>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@400;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap');
+
+        :root { --copper: #B87333; --gold: #C9940A; --blue: #00B4D8; }
+
+        body { background-color: #000000; font-family: ui-sans-serif, system-ui, sans-serif; }
+        .font-display { font-family: 'Chakra Petch', ui-sans-serif, sans-serif; }
+        .font-hud     { font-family: 'IBM Plex Mono', ui-monospace, monospace; }
+
+        /* ── Circuit hero — copper dominant (OS / platform layer) ── */
+        .circuit-hero {
+            background-color: #000000;
+            background-image:
+                linear-gradient(rgba(185,115,51,0.06) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(185,115,51,0.06) 1px, transparent 1px),
+                radial-gradient(ellipse at 8% 60%, rgba(185,115,51,0.1) 0%, transparent 52%),
+                radial-gradient(ellipse at 90% 15%, rgba(0,180,216,0.07) 0%, transparent 50%),
+                radial-gradient(ellipse at 50% 95%, rgba(185,115,51,0.05) 0%, transparent 40%);
+            background-size: 44px 44px, 44px 44px, 100% 100%, 100% 100%, 100% 100%;
+        }
+
+        .bg-card    { background-color: #0D1117; }
+        .bg-terminal { background-color: #070d14; }
+
+        .ring-copper { border: 1px solid rgba(185,115,51,0.55); box-shadow: 0 0 14px rgba(185,115,51,0.3), inset 0 0 14px rgba(185,115,51,0.04); }
+        .ring-blue   { border: 1px solid rgba(0,180,216,0.5);  box-shadow: 0 0 14px rgba(0,180,216,0.3),  inset 0 0 14px rgba(0,180,216,0.04); }
+
+        .btn-primary {
+            display: inline-flex; align-items: center; gap: 0.5rem;
+            background: linear-gradient(135deg, #B87333, #9A6128);
+            color: #000; font-weight: 700; font-size: 0.875rem;
+            padding: 0.75rem 1.5rem; border-radius: 0.75rem;
+            transition: all 0.3s ease; text-decoration: none;
+        }
+        .btn-primary:hover {
+            background: linear-gradient(135deg, #C9940A, #B87333);
+            box-shadow: 0 0 28px rgba(185,115,51,0.65), 0 0 55px rgba(185,115,51,0.25);
+            transform: translateY(-1px);
+        }
+        .btn-ghost {
+            display: inline-flex; align-items: center; gap: 0.5rem;
+            border: 1px solid rgba(185,115,51,0.45); color: #B87333;
+            font-weight: 600; font-size: 0.875rem;
+            padding: 0.75rem 1.5rem; border-radius: 0.75rem;
+            transition: all 0.3s ease; text-decoration: none; background: transparent;
+        }
+        .btn-ghost:hover {
+            border-color: #B87333;
+            box-shadow: 0 0 22px rgba(185,115,51,0.4), 0 0 44px rgba(185,115,51,0.15);
+            color: #C9940A; background: rgba(185,115,51,0.07);
+            transform: translateY(-1px);
+        }
+        .btn-nav {
+            display: inline-flex; align-items: center; gap: 0.5rem;
+            border: 1px solid rgba(185,115,51,0.3); color: #B87333;
+            font-weight: 500; font-size: 0.75rem;
+            padding: 0.375rem 0.875rem; border-radius: 9999px;
+            transition: all 0.25s ease; text-decoration: none; background: transparent;
+        }
+        .btn-nav:hover { border-color: #B87333; box-shadow: 0 0 16px rgba(185,115,51,0.35); color: #C9940A; }
+
+        .card {
+            background: #0D1117; border: 1px solid rgba(255,255,255,0.06);
+            border-radius: 1rem; transition: all 0.3s ease;
+        }
+        .card:hover {
+            border-color: rgba(185,115,51,0.35);
+            box-shadow: 0 0 22px rgba(185,115,51,0.1), 0 8px 32px rgba(0,0,0,0.45);
+            transform: translateY(-2px);
+        }
+        .card-blue:hover {
+            border-color: rgba(0,180,216,0.3);
+            box-shadow: 0 0 22px rgba(0,180,216,0.1), 0 8px 32px rgba(0,0,0,0.45);
+        }
+
+        .text-copper      { color: #B87333; }
+        .text-blue        { color: #00B4D8; }
+        .text-gold        { color: #C9940A; }
+        .text-glow-copper { color: #B87333; text-shadow: 0 0 24px rgba(185,115,51,0.5); }
+        .text-glow-blue   { color: #00B4D8; text-shadow: 0 0 24px rgba(0,180,216,0.5); }
+
+        .divider      { height: 1px; background: linear-gradient(90deg, transparent, rgba(185,115,51,0.3), transparent); }
+        .divider-blue { height: 1px; background: linear-gradient(90deg, transparent, rgba(0,180,216,0.25), transparent); }
+
+        .nav-bar { border-bottom: 1px solid rgba(185,115,51,0.1); box-shadow: 0 1px 24px rgba(185,115,51,0.05); }
+
+        .pulse-dot {
+            display: inline-block; height: 0.5rem; width: 0.5rem;
+            border-radius: 9999px; background: #B87333; animation: pulse 2.2s infinite;
+        }
+        @keyframes pulse {
+            0%   { box-shadow: 0 0 0 0 rgba(185,115,51,0.55); }
+            70%  { box-shadow: 0 0 0 7px rgba(185,115,51,0); }
+            100% { box-shadow: 0 0 0 0 rgba(185,115,51,0); }
+        }
+
+        .badge-copper {
+            background: rgba(185,115,51,0.12); border: 1px solid rgba(185,115,51,0.35);
+            color: #B87333; font-size: 0.65rem; font-weight: 700;
+            letter-spacing: 0.12em; text-transform: uppercase;
+            padding: 0.2rem 0.65rem; border-radius: 9999px;
+        }
+        .badge-blue {
+            background: rgba(0,180,216,0.1); border: 1px solid rgba(0,180,216,0.3);
+            color: #00B4D8; font-size: 0.65rem; font-weight: 700;
+            letter-spacing: 0.12em; text-transform: uppercase;
+            padding: 0.2rem 0.65rem; border-radius: 9999px;
+        }
+
+        /* ── Terminal block ── */
+        .terminal {
+            background: #070d14;
+            border: 1px solid rgba(185,115,51,0.2);
+            border-radius: 0.875rem;
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 0.78rem;
+            overflow: hidden;
+        }
+        .terminal-bar {
+            background: rgba(185,115,51,0.07);
+            border-bottom: 1px solid rgba(185,115,51,0.12);
+            padding: 0.5rem 1rem;
+            display: flex; align-items: center; gap: 0.5rem;
+        }
+        .t-dot { width: 10px; height: 10px; border-radius: 50%; }
+        .terminal-body { padding: 1.25rem 1.25rem; line-height: 1.7; }
+        .t-prompt { color: #B87333; }
+        .t-cmd    { color: #e2e8f0; }
+        .t-out    { color: #64748b; }
+        .t-ok     { color: #22c55e; }
+        .t-info   { color: #00B4D8; }
+
+        /* ── Layer bridge cards ── */
+        .bridge-card {
+            padding: 1rem 1.25rem;
+            border-radius: 0.875rem;
+            border: 1px solid rgba(185,115,51,0.15);
+            background: rgba(185,115,51,0.03);
+            transition: all 0.25s ease;
+        }
+        .bridge-card:hover {
+            border-color: rgba(185,115,51,0.35);
+            background: rgba(185,115,51,0.06);
+        }
+        .bridge-card-blue {
+            border-color: rgba(0,180,216,0.15);
+            background: rgba(0,180,216,0.03);
+        }
+        .bridge-card-blue:hover {
+            border-color: rgba(0,180,216,0.35);
+            background: rgba(0,180,216,0.06);
+        }
+    </style>
+</head>
+<body class="text-slate-100 antialiased">
+
+<!-- ── Nav ── -->
+<header class="nav-bar sticky top-0 z-50" style="background: rgba(0,0,0,0.88); backdrop-filter: blur(14px);">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-3 flex items-center justify-between gap-4">
+        <a href="index.html" class="flex items-center gap-3 group">
+            <div style="width:36px;height:36px;border-radius:0.6rem;overflow:hidden;border:1px solid rgba(185,115,51,0.35);background:rgba(185,115,51,0.06);display:flex;align-items:center;justify-content:center;">
+                <img src="assets/img/un-os-logo.png" alt="EVE OS" style="width:30px;height:30px;object-fit:contain;"/>
+            </div>
+            <div class="flex flex-col leading-tight">
+                <span class="font-display font-semibold text-sm tracking-wide text-glow-copper">EVE OS</span>
+                <span class="font-hud text-[10px] text-slate-500 tracking-widest uppercase">AI-Aware Operating System</span>
+            </div>
+        </a>
+        <nav class="flex items-center gap-2">
+            <a href="https://eve-systems.com" class="btn-nav hidden sm:inline-flex"><i class="fa-solid fa-download text-[10px]"></i> Get Started</a>
+            <a href="https://umbra-noesis.com" class="btn-nav"><i class="fa-solid fa-arrow-left text-[10px]"></i> Umbra-Noesis</a>
+        </nav>
+    </div>
+</header>
+
+<!-- ── Hero ── -->
+<section class="circuit-hero py-16 sm:py-24">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+
+            <!-- Left: copy -->
+            <div>
+                <p class="font-hud text-xs tracking-[0.28em] uppercase mb-5" style="color:rgba(185,115,51,0.75);">
+                    Umbra-Noesis · Platform Layer
+                </p>
+                <h1 class="font-display text-4xl sm:text-5xl md:text-6xl font-bold leading-[1.05] tracking-tight text-slate-50 mb-4">
+                    EVE OS
+                </h1>
+                <p class="font-display text-xl sm:text-2xl font-semibold mb-6 text-glow-copper">
+                    Local AI infrastructure —<br/>Linux security built in,<br/>for everyday use.
+                </p>
+                <p class="text-base sm:text-lg text-slate-300 leading-relaxed mb-8 max-w-lg">
+                    EVE OS is the AI-aware Linux operating system at the core of the Umbra-Noesis stack. Local inference, memory, and tool orchestration are <span style="color:#B87333;">first-class OS citizens</span> — not add-ons bolted on top.
+                </p>
+                <div class="flex flex-wrap gap-3 mb-8">
+                    <a href="https://eve-systems.com" class="btn-primary font-display">
+                        <i class="fa-solid fa-download text-sm"></i> Download EVE OS
+                    </a>
+                    <a href="https://evaa-cognition.com" class="btn-ghost font-display">
+                        <i class="fa-solid fa-brain text-sm"></i> EVAA Engine
+                    </a>
                 </div>
-            </header>
-            <!-- Main content -->
-            <main class="flex-1">
-                <section class="py-10 sm:py-14">
-                    <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
-                        <!-- Hero -->
-                        <div class="max-w-3xl">
-                            <p class="text-xs font-semibold tracking-[0.22em] text-[#B87333] uppercase mb-3">
-                                EVE OS </p>
-                            <h1 class="text-3xl sm:text-4xl md:text-5xl font-semibold tracking-tight text-slate-50 mb-4">
-                                EVE OS — Local AI-Aware Operating System </h1>
-                            <p class="text-base sm:text-lg text-slate-300 leading-relaxed mb-6">
-                                EVE OS is the operating system layer of Umbra-Noesis, built for <span class="text-[#B87333]">local-first cognition</span>. It is the base environment where AI, tools,
-                                memory, and hardware are orchestrated together as a <span class="text-[#B87333]">single, predictable system</span> instead of a pile of disconnected apps. </p>
-                            <div class="flex flex-wrap gap-3 mb-8">
-                                <span class="inline-flex items-center gap-2 rounded-full border border-slate-700 bg-slate-900/90 px-3 py-1 text-xs font-medium text-slate-200"> <i class="fa-solid fa-bolt text-[11px]"></i>
-                                    Local-first execution </span>
-                                <span class="inline-flex items-center gap-2 rounded-full border border-slate-700 bg-slate-900/90 px-3 py-1 text-xs font-medium text-slate-200"> <i class="fa-solid fa-brain text-[11px]"></i>
-                                    AI-native orchestration </span>
-                                <span class="inline-flex items-center gap-2 rounded-full border border-slate-700 bg-slate-900/90 px-3 py-1 text-xs font-medium text-slate-200"> <i class="fa-solid fa-shield-alt text-[11px]"></i>
-                                    Secure, privacy-anchored </span>
-                            </div>
-                        </div>
-                        <!-- Status / Updates (lightweight, no CMS) -->
-                        <div class="mt-2 mb-6">
-                            <div class="rounded-2xl border border-slate-800 bg-slate-900/50 p-4 sm:p-5">
-                                <p class="text-xs font-semibold tracking-[0.22em] text-[#B87333] uppercase mb-2">
-      Project Status </p>
-                                <p class="text-sm sm:text-base text-slate-200 mb-1">
-      Available — Linux release </p>
-                                <p class="text-xs sm:text-sm text-slate-300 leading-relaxed">
-      EVAA local AI assistant available for Linux. Updated June 2026. </p>
-                            </div>
-                        </div>
-                        <!-- Two-column content -->
-                        <div class="grid gap-8 md:grid-cols-[minmax(0,1.3fr)_minmax(0,1fr)] mt-4">
-                            <!-- Left: explanation -->
-                            <div class="space-y-6">
-                                <div class="bg-slate-900/70 border border-slate-800 rounded-2xl p-5 sm:p-6 shadow-lg shadow-black/40">
-                                    <h2 class="text-lg sm:text-xl font-semibold text-slate-50 mb-3">
-                                        What is EVE OS? </h2>
-                                    <p class="text-sm sm:text-base text-slate-300 leading-relaxed mb-3">
-                                        EVE OS is the <span class="text-[#B87333]">AI-aware operating system layer</span> that
-                                        anchors the Umbra-Noesis stack. It defines how the underlying OS, services,
-                                        and AI runtimes are arranged so your machine behaves like a <span class="text-[#B87333]">cognitive platform</span> instead of a generic workstation. </p>
-                                    <ul class="list-disc list-inside text-sm sm:text-base text-slate-300 space-y-1.5">
-                                        <li>Runs local AI inference as a first-class, always-available workload.</li>
-                                        <li>Coordinates memory, tools, and processes under a single orchestration layer.</li>
-                                        <li>Provides a predictable, deterministic base across different PCe profiles.</li>
-                                    </ul>
-                                </div>
-                                <div class="bg-slate-900/60 border border-slate-800 rounded-2xl p-5 sm:p-6">
-                                    <h3 class="text-sm font-semibold text-slate-100 mb-2">
-                                        How EVE OS fits the Umbra-Noesis stack </h3>
-                                    <p class="text-xs sm:text-sm text-slate-300 leading-relaxed mb-3">
-                                        EVE OS sits between your hardware and your cognition stack. It binds PCe
-                                        (Personal Cognitive Environment), EVAA (cognitive engine), and E.V.E. (UI layer)
-                                        into a <span class="text-[#B87333]">coherent operating environment</span> instead of separate
-                                        projects that just happen to run on the same box. </p>
-                                    <div class="grid gap-3 sm:grid-cols-3 text-xs sm:text-sm">
-                                        <div class="rounded-xl border border-slate-800 bg-slate-950/70 p-3">
-                                            <p class="font-semibold text-slate-100 mb-1">Hardware ←→ OS</p>
-                                            <p class="text-slate-300">
-                                                Maps PCe profiles into tuned OS layouts: storage, GPUs, services, and
-                                                runtimes configured for cognition first. </p>
-                                        </div>
-                                        <div class="rounded-xl border border-slate-800 bg-slate-950/70 p-3">
-                                            <p class="font-semibold text-slate-100 mb-1">OS ←→ Cognition</p>
-                                            <p class="text-slate-300">
-                                                Provides EVAA with stable runtimes, process isolation, and access to
-                                                local tools, logs, and archives. </p>
-                                        </div>
-                                        <div class="rounded-xl border border-slate-800 bg-slate-950/70 p-3">
-                                            <p class="font-semibold text-slate-100 mb-1">OS ←→ Experience</p>
-                                            <p class="text-slate-300">
-                                                Exposes clean hooks for EVE Systems, training stacks, and future
-                                                Umbra-Noesis modules to plug in cleanly. </p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <!-- Right: roadmap / cards -->
-                            <aside class="space-y-4">
-                                <div class="bg-slate-900/70 border border-slate-800 rounded-2xl p-5 sm:p-6 shadow-lg shadow-black/30">
-                                    <h2 class="text-sm sm:text-base font-semibold text-slate-50 mb-2">
-                                        EVE OS Roadmap (High Level) </h2>
-                                    <ul class="text-xs sm:text-sm text-slate-300 space-y-2">
-                                        <li class="flex gap-2">
-                                            <span class="mt-1 h-1.5 w-1.5 rounded-full bg-[#B87333]"></span>
-                                            <span> <span class="font-semibold text-slate-100">EVE OS reference builds</span> —
-                                                operating across multiple profiles, including:
-• Workstation-class systems for daily personal use
-• Lab-class systems for development and testing
-• Field/edge systems for mobile or constrained environments. </span>
-                                        </li>
-                                        <li class="flex gap-2">
-                                            <span class="mt-1 h-1.5 w-1.5 rounded-full bg-[#B87333]"></span>
-                                            <span> <span class="font-semibold text-slate-100">Installer / ISO Profiles</span> —
-                                                curated install paths and system roles for lab, field, and client deployments. </span>
-                                        </li>
-                                        <li class="flex gap-2">
-                                            <span class="mt-1 h-1.5 w-1.5 rounded-full bg-[#B87333]"></span>
-                                            <span> <span class="font-semibold text-slate-100">PCe-Certified Releases</span> —
-                                                documented EVE OS versions matched to specific PCe hardware blueprints. </span>
-                                        </li>
-                                    </ul>
-                                </div>
-                                <div class="bg-slate-950/80 border border-slate-800 rounded-2xl p-4 sm:p-5">
-                                    <h3 class="text-xs font-semibold tracking-[0.22em] text-[#B87333] uppercase mb-2">
-                                        Integration Points </h3>
-                                    <p class="text-xs sm:text-sm text-slate-300 leading-relaxed mb-3">
-                                        EVE OS is designed to host and coordinate: </p>
-                                    <ul class="text-xs sm:text-sm text-slate-300 space-y-1.5">
-                                        <li>EVAA Cognition as the resident local AI engine.</li>
-                                        <li>EVE Systems as the primary interaction and training layer.</li>
-                                        <li>AACP Protocol and Umbra Link for messaging, routing, and identity.</li>
-                                        <li>PCe profiles as the underlying hardware blueprints it runs on.</li>
-                                    </ul>
-                                    <p class="text-[11px] text-slate-500 mt-3">
-                                        This page is an early structural skeleton. Final installer flows, licensing
-                                        paths, and public documentation will be defined as Umbra-Noesis approaches
-                                        general availability. </p>
-                                </div>
-                            </aside>
+                <div class="flex flex-wrap gap-2">
+                    <span class="badge-copper"><i class="fa-solid fa-linux mr-1"></i>Linux-Based</span>
+                    <span class="badge-copper"><i class="fa-solid fa-bolt mr-1"></i>Local-First</span>
+                    <span class="badge-blue"><i class="fa-solid fa-brain mr-1"></i>AI-Native</span>
+                    <span class="badge-blue"><i class="fa-solid fa-shield-halved mr-1"></i>No Cloud Required</span>
+                </div>
+            </div>
+
+            <!-- Right: OS logo with rings -->
+            <div class="flex items-center justify-center lg:justify-end">
+                <div class="relative flex items-center justify-center" style="width:280px;height:280px;">
+                    <div class="ring-copper absolute inset-0" style="border-radius:1.5rem;"></div>
+                    <div class="ring-blue absolute" style="inset:10px;border-radius:1.25rem;"></div>
+                    <img
+                        src="assets/img/un-os-logo.png"
+                        alt="EVE OS"
+                        style="width:200px;height:200px;object-fit:contain;border-radius:1rem;position:relative;z-index:1;"
+                    />
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ── Status strip ── -->
+<div style="background:#050508;border-top:1px solid rgba(185,115,51,0.1);border-bottom:1px solid rgba(185,115,51,0.1);">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-3 flex flex-wrap items-center gap-x-8 gap-y-2">
+        <div class="flex items-center gap-2">
+            <span class="pulse-dot"></span>
+            <span class="font-hud text-xs text-slate-300">Available now — Linux release · June 2026</span>
+        </div>
+        <div class="flex items-center gap-2">
+            <span class="w-2 h-2 rounded-full" style="background:rgba(0,180,216,0.5);"></span>
+            <span class="font-hud text-xs text-slate-400">EVAA Cognition — included</span>
+        </div>
+        <div class="flex items-center gap-2">
+            <span class="w-2 h-2 rounded-full" style="background:rgba(185,115,51,0.35);"></span>
+            <span class="font-hud text-xs text-slate-400">PCe-Certified builds — roadmap</span>
+        </div>
+    </div>
+</div>
+
+<!-- ── What it is + Terminal ── -->
+<section class="py-16 sm:py-20" style="background:#000000;">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
+
+            <!-- Left: explanation -->
+            <div>
+                <p class="font-hud text-xs tracking-[0.22em] uppercase mb-3 text-copper">What it is</p>
+                <h2 class="font-display text-2xl sm:text-3xl font-bold text-slate-50 mb-4">The OS that treats AI as infrastructure</h2>
+                <p class="text-slate-300 leading-relaxed mb-5">
+                    Standard operating systems treat AI as an application you launch and close. EVE OS treats it as infrastructure — the same way a server OS treats networking or a storage daemon. Local inference runs continuously, memory persists across sessions, and tools are orchestrated at the OS level rather than inside a single app.
+                </p>
+                <p class="text-slate-400 text-sm leading-relaxed mb-6">
+                    Built on Linux, EVE OS inherits decades of security hardening, process isolation, and driver support — then adds the Umbra-Noesis layers on top: EVAA Cognition, AACP Protocol, and Umbra Link identity and routing.
+                </p>
+                <div class="space-y-3">
+                    <div class="flex items-start gap-3">
+                        <i class="fa-solid fa-square-check text-copper mt-0.5 text-sm"></i>
+                        <p class="text-sm text-slate-300">Local AI inference runs as a persistent OS-level service</p>
+                    </div>
+                    <div class="flex items-start gap-3">
+                        <i class="fa-solid fa-square-check text-copper mt-0.5 text-sm"></i>
+                        <p class="text-sm text-slate-300">Memory and context persist across sessions and reboots</p>
+                    </div>
+                    <div class="flex items-start gap-3">
+                        <i class="fa-solid fa-square-check text-copper mt-0.5 text-sm"></i>
+                        <p class="text-sm text-slate-300">Linux security model — no new attack surface introduced</p>
+                    </div>
+                    <div class="flex items-start gap-3">
+                        <i class="fa-solid fa-square-check text-copper mt-0.5 text-sm"></i>
+                        <p class="text-sm text-slate-300">Deterministic, auditable behavior via AACP protocol layer</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Right: terminal mockup -->
+            <div>
+                <p class="font-hud text-xs tracking-[0.22em] uppercase mb-3 text-blue">System Output</p>
+                <div class="terminal">
+                    <div class="terminal-bar">
+                        <span class="t-dot" style="background:#ff5f57;"></span>
+                        <span class="t-dot" style="background:#febc2e;"></span>
+                        <span class="t-dot" style="background:#28c840;"></span>
+                        <span class="font-hud text-xs text-slate-500 ml-2">eve-os — local session</span>
+                    </div>
+                    <div class="terminal-body">
+                        <div><span class="t-prompt">eve@local:~$ </span><span class="t-cmd">systemctl status evaa</span></div>
+                        <div class="t-ok">● evaa.service — EVAA Cognition Engine</div>
+                        <div class="t-out">&nbsp;&nbsp; Loaded: loaded (/etc/systemd/system/evaa.service)</div>
+                        <div class="t-ok">&nbsp;&nbsp; Active: active (running)</div>
+                        <div class="t-out">&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;Since: Jun 2026 — local inference online</div>
+                        <br/>
+                        <div><span class="t-prompt">eve@local:~$ </span><span class="t-cmd">evaa status</span></div>
+                        <div class="t-info">▸ Model: local · Context: active · Memory: persistent</div>
+                        <div class="t-info">▸ Protocol: AACP · Node: MobileCore · Link: local mesh</div>
+                        <div class="t-out">▸ Cloud dependency: none</div>
+                        <br/>
+                        <div><span class="t-prompt">eve@local:~$ </span><span class="t-cmd">evaa ask "status check"</span></div>
+                        <div class="t-ok">▸ All systems nominal. Running local. No outbound required.</div>
+                        <br/>
+                        <div><span class="t-prompt">eve@local:~$ </span><span class="t-cmd">_</span></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<div class="divider max-w-6xl mx-auto"></div>
+
+<!-- ── Stack positioning ── -->
+<section class="py-16 sm:py-20" style="background:#000000;">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="mb-10">
+            <p class="font-hud text-xs tracking-[0.22em] uppercase mb-3 text-copper">Stack Position</p>
+            <h2 class="font-display text-2xl sm:text-3xl font-bold text-slate-50">The layer that binds everything together</h2>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-5">
+
+            <div class="bridge-card">
+                <p class="font-hud text-xs text-slate-500 uppercase tracking-widest mb-3">Hardware ↔ OS</p>
+                <p class="font-display font-semibold text-sm text-copper mb-2">PCe Profiles → EVE OS</p>
+                <p class="text-xs text-slate-400 leading-relaxed">Maps PCe hardware configurations into tuned OS layouts. Storage, GPUs, memory, and inference runtimes are arranged for cognition workloads — not generic computing.</p>
+            </div>
+
+            <div class="bridge-card bridge-card-blue">
+                <p class="font-hud text-xs text-slate-500 uppercase tracking-widest mb-3">OS ↔ Cognition</p>
+                <p class="font-display font-semibold text-sm text-blue mb-2">EVE OS → EVAA</p>
+                <p class="text-xs text-slate-400 leading-relaxed">Provides EVAA Cognition with stable runtimes, process isolation, hardware access, and persistent storage. The OS is the platform EVAA runs on — not a container it fights against.</p>
+            </div>
+
+            <div class="bridge-card">
+                <p class="font-hud text-xs text-slate-500 uppercase tracking-widest mb-3">OS ↔ Experience</p>
+                <p class="font-display font-semibold text-sm text-copper mb-2">EVE OS → EVE Systems</p>
+                <p class="text-xs text-slate-400 leading-relaxed">Exposes clean service hooks for EVE Systems UI, training stacks, and future Umbra-Noesis modules. The interface layer plugs into the OS — the OS doesn't depend on the UI.</p>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+<div class="divider max-w-6xl mx-auto"></div>
+
+<!-- ── Roadmap ── -->
+<section class="py-16 sm:py-20" style="background:#000000;">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
+
+            <div>
+                <p class="font-hud text-xs tracking-[0.22em] uppercase mb-3 text-copper">Roadmap</p>
+                <h2 class="font-display text-2xl sm:text-3xl font-bold text-slate-50 mb-8">Build targets</h2>
+
+                <div class="space-y-6">
+                    <div class="relative pl-6">
+                        <span class="absolute left-0 top-1.5 w-2 h-2 rounded-full" style="background:#B87333;box-shadow:0 0 8px rgba(185,115,51,0.6);"></span>
+                        <p class="font-display font-semibold text-sm text-slate-100 mb-1">EVE OS Reference Build</p>
+                        <p class="text-xs text-slate-400 leading-relaxed">Available now for standard Linux workstations and laptops. EVAA Cognition included. Supports daily personal use, lab environments, and field deployments.</p>
+                        <span class="badge-copper mt-2 inline-block">Available — Linux</span>
+                    </div>
+                    <div class="divider"></div>
+                    <div class="relative pl-6">
+                        <span class="absolute left-0 top-1.5 w-2 h-2 rounded-full" style="background:rgba(185,115,51,0.5);"></span>
+                        <p class="font-display font-semibold text-sm text-slate-100 mb-1">Installer · ISO Profiles</p>
+                        <p class="text-xs text-slate-400 leading-relaxed">Curated install paths with defined system roles — workstation, lab, and field configurations. Reproducible builds across hardware profiles.</p>
+                        <span class="badge-copper mt-2 inline-block">In Development</span>
+                    </div>
+                    <div class="divider"></div>
+                    <div class="relative pl-6">
+                        <span class="absolute left-0 top-1.5 w-2 h-2 rounded-full" style="background:rgba(255,255,255,0.15);"></span>
+                        <p class="font-display font-semibold text-sm text-slate-100 mb-1">PCe-Certified Releases</p>
+                        <p class="text-xs text-slate-400 leading-relaxed">Documented EVE OS versions matched and validated against specific PCe hardware blueprints. Guaranteed inference performance per hardware tier.</p>
+                        <span class="badge-copper mt-2 inline-block" style="background:rgba(255,255,255,0.05);border-color:rgba(255,255,255,0.1);color:#9ca3af;">Roadmap</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Hardware requirements (from eve-systems.com) -->
+            <div>
+                <p class="font-hud text-xs tracking-[0.22em] uppercase mb-3 text-blue">Hardware Requirements</p>
+                <h2 class="font-display text-2xl sm:text-3xl font-bold text-slate-50 mb-8">Minimum to run well</h2>
+                <div class="space-y-3">
+
+                    <div class="flex items-center gap-4 p-4 rounded-xl" style="background:#0D1117;border:1px solid rgba(255,255,255,0.05);">
+                        <i class="fa-solid fa-microchip text-copper w-5 text-center"></i>
+                        <div>
+                            <p class="font-display font-semibold text-xs text-slate-100">CPU</p>
+                            <p class="text-xs text-slate-400">8-core modern processor — AMD Ryzen 7 / Intel Core i7 or better</p>
                         </div>
                     </div>
-                </section>
-            </main>
-            <!-- Footer -->
-            <footer class="border-t border-slate-900 bg-slate-950/90">
-                <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-4 flex flex-col sm:flex-row items-center justify-between gap-2">
-                    <p class="text-[11px] text-slate-500">
-                        Umbra-Noesis · EVE OS — Operating System Layer </p>
-                    <p class="text-[11px] text-slate-500">
-                        Part of the private Umbra-Noesis human–AI ecosystem. </p>
+
+                    <div class="flex items-center gap-4 p-4 rounded-xl" style="background:#0D1117;border:1px solid rgba(255,255,255,0.05);">
+                        <i class="fa-solid fa-memory text-blue w-5 text-center"></i>
+                        <div>
+                            <p class="font-display font-semibold text-xs text-slate-100">RAM</p>
+                            <p class="text-xs text-slate-400">16 GB minimum · 32 GB+ recommended for larger models</p>
+                        </div>
+                    </div>
+
+                    <div class="flex items-center gap-4 p-4 rounded-xl" style="background:#0D1117;border:1px solid rgba(255,255,255,0.05);">
+                        <i class="fa-solid fa-hard-drive text-copper w-5 text-center"></i>
+                        <div>
+                            <p class="font-display font-semibold text-xs text-slate-100">Storage</p>
+                            <p class="text-xs text-slate-400">500 GB SSD minimum · NVMe preferred for model I/O</p>
+                        </div>
+                    </div>
+
+                    <div class="flex items-center gap-4 p-4 rounded-xl" style="background:#0D1117;border:1px solid rgba(255,255,255,0.05);">
+                        <i class="fa-solid fa-display text-blue w-5 text-center"></i>
+                        <div>
+                            <p class="font-display font-semibold text-xs text-slate-100">GPU</p>
+                            <p class="text-xs text-slate-400">Dedicated GPU recommended — 8 GB VRAM minimum for local inference</p>
+                        </div>
+                    </div>
+
+                    <div class="flex items-center gap-4 p-4 rounded-xl" style="background:#0D1117;border:1px solid rgba(255,255,255,0.05);">
+                        <i class="fa-brands fa-linux text-copper w-5 text-center"></i>
+                        <div>
+                            <p class="font-display font-semibold text-xs text-slate-100">Platform</p>
+                            <p class="text-xs text-slate-400">x86_64 Linux · Ubuntu 22.04 LTS / Debian 12 base supported</p>
+                        </div>
+                    </div>
+
                 </div>
-            </footer>
+            </div>
         </div>
-    </body>
+    </div>
+</section>
+
+<!-- ── Callout ── -->
+<section style="background:#050508;border-top:1px solid rgba(185,115,51,0.1);border-bottom:1px solid rgba(185,115,51,0.1);">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-14 text-center">
+        <p class="font-hud text-xs tracking-[0.28em] uppercase mb-4" style="color:rgba(185,115,51,0.6);">Why Linux</p>
+        <p class="font-display text-2xl sm:text-3xl md:text-4xl font-bold text-slate-50 max-w-3xl mx-auto leading-snug">
+            <span class="text-glow-copper">Linux security</span> isn't a feature.<br/>
+            <span class="text-glow-blue">It's the foundation.</span>
+        </p>
+        <p class="text-slate-400 mt-5 max-w-xl mx-auto text-sm sm:text-base leading-relaxed">
+            EVE OS doesn't add a security layer on top of an insecure base. It inherits Linux's proven isolation, privilege model, and decades of hardening — then builds AI infrastructure on top of something that earns trust rather than asking for it.
+        </p>
+        <div class="mt-8 flex flex-wrap gap-3 justify-center">
+            <a href="https://eve-systems.com" class="btn-primary font-display">
+                <i class="fa-solid fa-download text-sm"></i> Download EVE OS
+            </a>
+            <a href="https://evaa-cognition.com" class="btn-ghost font-display">
+                <i class="fa-solid fa-brain text-sm"></i> About EVAA
+            </a>
+        </div>
+    </div>
+</section>
+
+<!-- ── Footer ── -->
+<footer style="background:#000000;border-top:1px solid rgba(185,115,51,0.07);">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+        <div class="flex flex-col sm:flex-row items-center justify-between gap-4">
+            <div class="flex items-center gap-3">
+                <div style="width:28px;height:28px;border-radius:0.5rem;overflow:hidden;border:1px solid rgba(185,115,51,0.25);display:flex;align-items:center;justify-content:center;">
+                    <img src="assets/img/un-os-logo.png" alt="EVE OS" style="width:24px;height:24px;object-fit:contain;opacity:0.75;"/>
+                </div>
+                <div>
+                    <p class="font-display font-semibold text-sm text-slate-300">EVE OS</p>
+                    <p class="font-hud text-[10px] text-slate-600 tracking-widest uppercase">A Division of Umbra-Noesis LLC</p>
+                </div>
+            </div>
+            <div class="flex items-center gap-4">
+                <a href="https://umbra-noesis.com"  class="font-hud text-xs text-slate-500 hover:text-copper transition-colors">Umbra-Noesis</a>
+                <span class="text-slate-700">·</span>
+                <a href="https://eve-systems.com"   class="font-hud text-xs text-slate-500 hover:text-copper transition-colors">EVE Systems</a>
+                <span class="text-slate-700">·</span>
+                <a href="https://evaa-cognition.com" class="font-hud text-xs text-slate-500 hover:text-copper transition-colors">EVAA</a>
+                <span class="text-slate-700">·</span>
+                <a href="https://pce-system.com"    class="font-hud text-xs text-slate-500 hover:text-copper transition-colors">PCe Systems</a>
+            </div>
+        </div>
+    </div>
+</footer>
+
+</body>
 </html>
